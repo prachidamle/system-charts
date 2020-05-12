@@ -26,8 +26,8 @@ sonobuoy:
 
 image:
   securityScan:
-    repository: rancher/security-scan
-    tag: v0.1.9
+    repository: prachidamle/security-scan
+    tag: dev
     pullPolicy: Always
   sonobuoy:
     repository: rancher/sonobuoy-sonobuoy
