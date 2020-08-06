@@ -16,6 +16,9 @@ spec:
   serviceAccountName: s-sa-{{ .Release.Name }}
   terminationGracePeriodSeconds: 0
   volumes:
+    - name: docker
+      hostPath:
+        path: /var/run/docker.sock
     - configMap:
         name: s-config-cm-{{ .Release.Name }}
       name: s-config-volume
@@ -77,6 +80,8 @@ spec:
           name: s-plugins-volume
         - mountPath: /tmp/sonobuoy
           name: output-volume
+        - mountPath: /var/run/docker.sock
+          name: docker
         {{- if ne .Values.userSkipConfigMapName "" }}
         - mountPath: /etc/kbs/userskip
           name: user-skip-info-volume
